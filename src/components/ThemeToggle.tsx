@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "../app/store";
+
 import { toggleTheme } from "../features/theme/themeSlice";
 
 const ThemeToggle = () => {
@@ -12,9 +13,9 @@ const ThemeToggle = () => {
   return (
     <button
       onClick={() => dispatch(toggleTheme())}
-      className="px-4 py-2 rounded bg-blue-500 text-white"
+      className="px-4 py-2 rounded-xl bg-black text-white dark:bg-white dark:text-black transition-all duration-300 hover:scale-105"
     >
-      {mode === "light" ? "Dark" : "Light"}
+      {mode === "light" ? "🌙 Dark" : "☀ Light"}
     </button>
   );
 };
