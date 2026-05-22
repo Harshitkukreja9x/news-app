@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import type { RootState } from "./app/store";
-import ThemeToggle from "./components/ThemeToggle";
-import LanguageToggle from "./components/LanguageToggle";
+
+import Navbar from "./components/Navbar";
 import AppRoutes from "./routes/AppRoutes";
 
 function App() {
@@ -11,13 +11,13 @@ function App() {
 
   return (
     <div className={mode === "dark" ? "dark" : ""}>
-      <div className="min-h-screen p-6">
-        <div className="flex justify-between mb-6">
-          <ThemeToggle />
-          <LanguageToggle />
-        </div>
+      <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] transition-all duration-300">
+        
+        <Navbar />
 
-        <AppRoutes />
+        <main className="max-w-7xl mx-auto px-6 py-8">
+          <AppRoutes />
+        </main>
       </div>
     </div>
   );
