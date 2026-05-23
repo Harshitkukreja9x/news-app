@@ -1,19 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #ffffff;
+  --bg: #f4f7fb;
   --text: #111827;
-  --card: #f3f4f6;
+  --card: #ffffff;
 }
 
 .dark {
-  --bg: #111827;
-  --text: #ffffff;
-  --card: #1f2937;
+  --bg: #0f172a;
+  --text: #f9fafb;
+  --card: #1e293b;
 }
 
 body {
+  margin: 0;
+  font-family: Inter, sans-serif;
   background: var(--bg);
   color: var(--text);
   transition: all 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
 }

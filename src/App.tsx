@@ -1,18 +1,27 @@
 import { useSelector } from "react-redux";
+
 import type { RootState } from "./app/store";
 
 import Navbar from "./components/Navbar";
 import AppRoutes from "./routes/AppRoutes";
 
 function App() {
+
   const mode = useSelector(
     (state: RootState) => state.theme.mode
   );
 
+  const lang = useSelector(
+    (state: RootState) => state.language.lang
+  );
+
   return (
-    <div className={mode === "dark" ? "dark" : ""}>
+    <div
+      className={mode === "dark" ? "dark" : ""}
+      dir={lang === "ar" ? "rtl" : "ltr"}
+    >
       <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] transition-all duration-300">
-        
+
         <Navbar />
 
         <main className="max-w-7xl mx-auto px-6 py-8">
