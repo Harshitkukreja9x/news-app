@@ -17,10 +17,27 @@ const LanguageToggle = () => {
       onChange={(e) =>
         dispatch(setLanguage(e.target.value))
       }
-      className="px-4 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900"
+      className="
+        px-4 py-2.5
+        rounded-xl
+        border
+        outline-none
+        transition-all duration-300
+        shadow-sm
+
+        bg-white
+        text-slate-800
+        border-slate-200
+
+        focus:ring-2
+        focus:ring-blue-400
+
+        dark:bg-slate-800
+        dark:text-white
+        dark:border-slate-700
+      "
     >
       <option value="en">🇺🇸 EN</option>
-
       <option value="ar">🇸🇦 AR</option>
     </select>
   );
