@@ -1,10 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { useSelector } from "react-redux";
-
-import type { RootState } from "../app/store";
-
-import { translations } from "../translations";
+import useTranslation from "../hooks/useTranslation";
 
 interface Props {
   post: any;
@@ -13,50 +9,103 @@ interface Props {
 
 const NewsCard = ({ post, author }: Props) => {
 
-  const lang = useSelector(
-    (state: RootState) => state.language.lang
-  );
-
-  const t = translations[lang as "en" | "ar"];
+  const t = useTranslation();
 
   return (
-    <div className="rounded-2xl overflow-hidden shadow-lg bg-[var(--card)] transition-all duration-300 hover:scale-[1.02]">
-      
-      <img
-        src={`https://picsum.photos/300/200?random=${post.id}`}
-        alt={post.title}
-        className="w-full h-48 object-cover"
-        onError={(e) => {
-          e.currentTarget.src =
-            "https://via.placeholder.com/300x200";
-        }}
-      />
+    <Link to={`/post/${post.id}`}>
+      <article
+        className="
+          bg-[var(--card)]
+          rounded-3xl
+          overflow-hidden
+          shadow-lg
+          hover:-translate-y-2
+          hover:shadow-2xl
+          transition-all duration-500
+          group
+        "
+      >
+        <div className="overflow-hidden">
 
-      <div className="p-5">
+          <img
+            src={`https://picsum.photos/600/400?random=${post.id}`}
+            alt={post.title}
+            className="
+              w-full
+              h-64
+              object-cover
+              group-hover:scale-110
+              transition duration-700
+            "
+            onError={(e) => {
+              e.currentTarget.src =
+                "https://via.placeholder.com/600x400";
+            }}
+          />
+        </div>
 
-        <h2 className="font-bold text-lg mb-3 line-clamp-2">
-          {post.title}
-        </h2>
+        <div className="p-6">
 
-        <p className="text-sm opacity-80 mb-4">
-          {post.body.slice(0, 90)}...
-        </p>
+          <span className="text-sm text-red-500 font-semibold">
+            Technology
+          </span>
 
-        <p className="text-sm mb-4">
-          <span className="font-semibold">
-            {t.author}:
-          </span>{" "}
-          {author}
-        </p>
+          <h2
+            className="
+              text-2xl
+              font-bold
+              leading-tight
+              mt-3
+              line-clamp-2
+              group-hover:text-red-500
+              transition
+            "
+          >
+            {post.title}
+          </h2>
 
-        <Link
-          to={`/post/${post.id}`}
-          className="text-blue-500 font-medium"
-        >
-          {t.readMore}
-        </Link>
-      </div>
-    </div>
+          <p className="mt-4 opacity-70 line-clamp-3">
+            {post.body}
+          </p>
+
+          <div className="mt-6 flex items-center justify-between">
+
+            <div className="flex items-center gap-3">
+
+              <img
+                src={`https://i.pravatar.cc/100?u=${post.userId}`}
+                alt={author}
+                className="w-10 h-10 rounded-full"
+              />
+
+              <div>
+                <p className="font-medium">
+                  {author}
+                </p>
+
+                <p className="text-sm opacity-60">
+                  {t.author}
+                </p>
+              </div>
+            </div>
+
+            <button
+              className="
+                w-12 h-12
+                rounded-full
+                bg-black
+                text-white
+                dark:bg-white
+                dark:text-black
+                text-xl
+              "
+            >
+              →
+            </button>
+          </div>
+        </div>
+      </article>
+    </Link>
   );
 };
 

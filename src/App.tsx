@@ -18,7 +18,7 @@ function App() {
   return (
     <div
       className={mode === "dark" ? "dark" : ""}
-      dir={lang === "ar" ? "rtl" : "ltr"}
+      
     >
       <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] transition-all duration-300">
 
