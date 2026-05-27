@@ -24,7 +24,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* MAIN NAVBAR — uses CSS vars instead of hardcoded dark: bg/border */}
+      {/* MAIN NAVBAR */}
       <div
         className="backdrop-blur-xl border-b shadow-sm"
         style={{

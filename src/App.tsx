@@ -11,10 +11,7 @@ function App() {
     (state: RootState) => state.theme.mode
   );
 
-  const lang = useSelector(
-    (state: RootState) => state.language.lang
-  );
-
+  
   return (
     <div
       className={mode === "dark" ? "dark" : ""}
